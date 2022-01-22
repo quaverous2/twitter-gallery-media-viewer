@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { Button, ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import { GalleryComponent } from './gallery/gallery.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InputTextModule,
+    ButtonModule,
+    RippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

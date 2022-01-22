@@ -1,0 +1,23 @@
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    width: 30%;
+    font-size: 200%;
+}
+
+p-button{
+    padding-left: 0.5em;
+}
+
+:host >>> .p-button.p-button {
+    font-size: 1.85rem;
+    background: #C2185B;
+}
+
+:host >>> .p-inputtext {
+    background: #BEBEBE;
+}

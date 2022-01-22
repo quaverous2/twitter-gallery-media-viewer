@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchbarComponent } from '../searchbar/searchbar.component';
 
 @Component({
   selector: 'app-user-panel',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    //public searchbar = SearchbarComponent;
+  ) { }
 
   ngOnInit(): void {
   }
