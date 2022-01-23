@@ -1,23 +1,162 @@
-div{
+/* #search{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-input{
+/* #searchbar{
     width: 30%;
     font-size: 200%;
+} */
+
+/* p-button{
+    padding-left: 0.5em;
+} */
+
+/* :host >>> .p-button.p-button {
+    font-size: 1.85rem;
+    background: #C2185B;
+} */
+
+/* :host >>> .p-inputtext {
+    background: #BEBEBE;
+} */
+
+/* form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-p-button{
-    padding-left: 0.5em;
+.stretch {
+    height: 10px;
+    background-color: yellow;
+    width: 50%;
+    height: 1px;
+  }
+
+#searchbar-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+[type=text]{
+    font-size: 200%;
+    width: 100%;
+}
+
+form > #advanced-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 35%;
+}
+
+form > #advanced-options > div {
+    display: flex;
+    flex-direction: column;
+}
+
+:host >>> .p-button.p-button .p-dropdown.p-dropdown-clearable .p-dropdown-label {
+    padding-right: 10rem;
+} */
+
+
+#component{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+[type=text]{
+    font-size: 150%;
+    width: 50rem;
+}
+
+:host >>> .p-float-label > label{
+    font-size: 120%;
+    color: #746b6e;
+}
+
+#searchbox > p{
+    display: flex;
+    justify-content: flex-end;
+
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: #f5f5f5; 
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#searchbox > p:hover{
+    color: #C2185B;
+    cursor: pointer;
 }
 
 :host >>> .p-button.p-button {
-    font-size: 1.85rem;
+    font-size: 1.5rem;
     background: #C2185B;
+    border: 0px;
 }
 
-:host >>> .p-inputtext {
-    background: #BEBEBE;
+label{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#sortItems{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.calendarSortItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+i{
+    padding-left: 0.5rem;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: #f5f5f5; 
+    cursor: pointer;
+}
+
+i:hover{
+    color: #C2185B;
+}
+
+:host>>> .p-dropdown{
+    width: 15rem;
+}
+
+.sortItem{
+    display: flex;
+    flex-direction: column;
+}
+
+p-button{
+    padding-left: 1rem;
 }

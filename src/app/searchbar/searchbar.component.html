@@ -1,4 +1,37 @@
-<div>
-    <input type="text" pInputText>
-    <p-button label="Search" icon="pi pi-search"></p-button>
-</div>
+<!-- (ngSubmit)="" -->
+<form [formGroup]="searchForm">
+    <div id="component">
+        <div>
+            <div id="searchbox">
+                <span class="p-float-label">
+                    <input type="text" id="handle" formControlName="handle" pInputText>
+                    <label for="handle">@Twitter Handle</label>
+                </span>
+                <p (click)="advancedOptions()">{{advancedOptionLabel}}</p>
+            </div>
+            <div *ngIf="advancedOptionsDisplay" @fadeIn @fadeOut id="sortItems">
+                <div class="sortItem">
+                    <label for="sortBy">Sort By:</label>
+                    <p-dropdown [options]="sortBy" inputId="sortBy" formControlName="sortBy" optionLabel="display"
+                        [autoDisplayFirst]="false">
+                    </p-dropdown>
+                </div>
+                <div class="sortItem">
+                    <label for="dateFrom">From:</label>
+                    <div class="calendarSortItem">
+                        <p-calendar formControlName="dateFrom" inputId="dateFrom"></p-calendar>
+                        <i class="pi pi-times" (click)="clearFrom()"></i>
+                    </div>
+                </div>
+                <div class="sortItem">
+                    <label for="dateTo">To:</label>
+                    <div class="calendarSortItem">
+                        <p-calendar formControlName="dateTo" inputId="dateTo"></p-calendar>
+                        <i class="pi pi-times" (click)="clearTo()"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-button icon="pi pi-search" label="Search" (onClick)="search()"></p-button>
+    </div>
+</form>
