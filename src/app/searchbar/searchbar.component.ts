@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { transition, style, animate, trigger } from '@angular/animations';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { pairwise } from 'rxjs';
 
 const enterTransition = transition(':enter', [
   style({
@@ -40,6 +41,7 @@ const fadeOut = trigger('fadeOut', [
 export class SearchbarComponent implements OnInit {
 
   searchForm: FormGroup;
+  today = new Date();
   sortBy: any[];
   selectedSort: String = '';
   advancedOptionsSelection: String[] = ["Show Advanced Options", "Hide Advanced Options"]
@@ -50,9 +52,35 @@ export class SearchbarComponent implements OnInit {
     this.searchForm = new FormGroup({
       handle: new FormControl('', Validators.required),
       sortBy: new FormControl(''),
-      dateFrom: new FormControl(''),
-      dateTo: new FormControl('')
+      dateFrom: new FormControl('', this.dateValidity()),
+      dateTo: new FormControl({ value: '', disabled: true }, this.dateValidity())
     })
+
+    // Disable "dateTo" field in absence of "dateFrom"
+    this.searchForm.get('dateFrom')?.valueChanges.subscribe(() => {
+      if (this.searchForm.get('dateFrom')?.value) {
+        this.searchForm.get('dateTo')?.enable();
+      } else {
+        this.searchForm.get('dateTo')?.setValue('');
+        this.searchForm.get('dateTo')?.disable();
+      }
+      this.searchForm.get('dateFrom')?.updateValueAndValidity({ emitEvent: false });
+      this.searchForm.get('dateTo')?.updateValueAndValidity({ emitEvent: false });
+    })
+
+    this.searchForm.valueChanges.pipe(pairwise())
+      .subscribe(([prev, next]: [any, any]) => {
+        if ((next.dateFrom > next.dateTo && next.dateTo)) {
+          this.searchForm.get('dateTo')?.setErrors({ 'incorrect': true });
+        } else {
+          if (next.dateTo < this.today) {
+            this.searchForm.get('dateTo')?.setErrors(null);
+          } else {
+            this.searchForm.get('dateTo')?.setErrors({ 'incorrect': true });
+          }
+        }
+      })
+
     this.sortBy = [
       { display: "   ", code: "N" },
       { display: "Likes", code: 'L' },
@@ -74,14 +102,26 @@ export class SearchbarComponent implements OnInit {
     this.advancedOptionsDisplay = !this.advancedOptionsDisplay;
   }
 
+  dateValidity() {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      if (control.value > this.today) {
+        return { error: true };
+      } else {
+        return null;
+      }
+    }
+  }
+
   clearFrom() {
     console.log("hello");
     this.searchForm.get('dateFrom')?.setValue("");
+    this.clearTo();
   }
 
   clearTo() {
     console.log("hello1");
     this.searchForm.get('dateTo')?.setValue("");
+    this.searchForm.get('dateTo')?.setErrors(null);
   }
 
   search() {

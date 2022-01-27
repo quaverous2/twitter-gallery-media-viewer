@@ -112,6 +112,11 @@ form > #advanced-options > div {
     border: 0px;
 }
 
+:host >>> .p-inputtext {
+    border: 4px solid #a6a6a6;
+}
+
+
 label{
     -webkit-touch-callout: none;
     -webkit-user-select: none;
