@@ -1,5 +1,33 @@
-div{
+#panel{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding-bottom: 1rem;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    background: #a84909;
+    border-radius: 50%;
+}
+
+#profile{
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.count{
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    display: flex;
+    justify-content: center;
 }

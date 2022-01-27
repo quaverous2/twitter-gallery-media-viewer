@@ -1,4 +1,20 @@
-<div>
-    <h1>Twitter Gallery Media Viewer</h1>
-    <button pButton pRipple type="button" icon="pi pi-align-justify" class="p-button-rounded"></button>
+<div id="panel">
+    <h1>TGMW</h1>
+    <div *ngIf="shared.profileData" id="profile">
+        <img src="../../assets/default.jpg" width="200" height="200">
+        <p>Handle name</p>
+        <div id="profile-info">
+            <div class="count">
+                <p>Followers</p>
+                <p>{{shared.profileData[0]}}</p>
+            </div>
+            <div class="count">
+                <p>Follows</p>
+                <p>{{shared.profileData[1]}}</p>
+            </div>
+        </div>
+    </div>
+    <h1>
+        <button pButton pRipple type="button" icon="pi pi-align-justify" class="p-button-rounded"></button>
+    </h1>
 </div>
