@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Shared } from '../shared';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public shared: Shared
+  ) { }
 
   ngOnInit(): void {
   }
