@@ -32,6 +32,6 @@
                 </div>
             </div>
         </div>
-        <p-button icon="pi pi-search" label="Search" (onClick)="search()"></p-button>
+        <p-button icon="pi pi-search" label="Search" [disabled]="searchForm.invalid" (onClick)="search()"></p-button>
     </div>
 </form>
