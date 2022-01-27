@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { Shared } from '../shared';
 
 @Component({
   selector: 'app-user-panel',
@@ -9,7 +9,7 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 export class UserPanelComponent implements OnInit {
 
   constructor(
-    //public searchbar = SearchbarComponent;
+    public shared: Shared
   ) { }
 
   ngOnInit(): void {

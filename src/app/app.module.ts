@@ -9,6 +9,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { Page } from './page';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RippleModule } from 'primeng/ripple';
     GalleryComponent
   ],
   imports: [
+    Page,
     BrowserModule,
     AppRoutingModule,
     InputTextModule,
