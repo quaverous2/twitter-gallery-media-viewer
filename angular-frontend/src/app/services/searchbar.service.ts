@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { TwitterApi } from 'twitter-api-v2';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/internal/operators/map';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchbarService {
 
-  client = new TwitterApi('APIKEY');;
+  api_url = 'http://localhost:3000';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  async getUserData() {
-    const homeTimeline = await this.client.v1.homeTimeline();
-
+  getUser(): Observable<any> {
+    return this.http.get(this.api_url + `/getUser`);
   }
 }

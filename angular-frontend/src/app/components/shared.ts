@@ -27,6 +27,8 @@ export class Shared {
     ]
 
     searchUser() {
-        console.log(this.sbService.getUserData());
+        this.sbService.getUser().subscribe(x => {
+            console.log(x);
+        })
     }
 }
