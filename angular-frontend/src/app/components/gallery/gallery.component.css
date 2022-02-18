@@ -6,6 +6,13 @@
   }
 
 .box div {
-  width: 63.03%; /* Placeholder width */
+  width: 80%; /* Placeholder width */
   flex-wrap: wrap;
+}
+
+img {
+  width: auto;
+  max-width: 400px;
+  height: auto;
+  max-height: 400px;
 }

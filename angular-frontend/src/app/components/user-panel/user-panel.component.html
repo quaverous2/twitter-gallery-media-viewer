@@ -1,16 +1,16 @@
 <div id="panel">
     <h1>TGMW</h1>
     <div *ngIf="shared.profileData" id="profile">
-        <img src="../../assets/default.jpg" width="200" height="200">
-        <p>Handle name</p>
+        <img src="{{shared.profileData.profile_image_url_https}}" width="200" height="200">
+        <p>{{shared.profileData.screen_name}}</p>
         <div id="profile-info">
             <div class="count">
                 <p>Followers</p>
-                <p>{{shared.profileData[0]}}</p>
+                <p>{{shared.profileData.followers_count}}</p>
             </div>
             <div class="count">
                 <p>Follows</p>
-                <p>{{shared.profileData[1]}}</p>
+                <p>{{shared.profileData.friends_count}}</p>
             </div>
         </div>
     </div>

@@ -128,7 +128,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   search() {
-    this.shared.searchUser();
+    this.shared.searchUser(this.searchForm.get('handle')?.value);
   }
 
 }

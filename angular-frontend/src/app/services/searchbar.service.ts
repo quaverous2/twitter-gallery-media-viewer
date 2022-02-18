@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,15 @@ export class SearchbarService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(): Observable<any> {
-    return this.http.get(this.api_url + `/getUser`);
+  getUser(handle: string): Observable<any> {
+    let params = new HttpParams()
+      .append("screen_name", handle)
+    return this.http.get(this.api_url + `/getUser`, { params: params });
+  }
+
+  getUserTimeline(id: string): Observable<any> {
+    let params = new HttpParams()
+      .append("id", id)
+    return this.http.get(this.api_url + `/getUserTimeline`, { params: params });
   }
 }

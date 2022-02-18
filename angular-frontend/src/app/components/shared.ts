@@ -13,22 +13,22 @@ export class Shared {
     //
     // This is a shared class that allows components to interact with each other easily through injection
     //
-    profileData: any[] = [];
-    mediaArray = [
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-        { "link": "../assets/default.jpg" },
-    ]
+    profileData: any = undefined;
+    mediaArray: any[] = [];
 
-    searchUser() {
-        this.sbService.getUser().subscribe(x => {
-            console.log(x);
+    searchUser(handle: string) {
+        this.sbService.getUser(handle).subscribe(x => {
+            this.profileData = x;
+            this.sbService.getUserTimeline(x.id).subscribe((y: any) => {
+                this.mediaArray = [];
+                y.media.forEach((element: any) => {
+                    this.mediaArray.push(element.url);
+                });
+            })
         })
+    }
+
+    getUserTimeline(id: string) {
+
     }
 }

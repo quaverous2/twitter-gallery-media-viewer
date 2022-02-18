@@ -1,6 +1,6 @@
 <div class="box">
     <div>
-        <img *ngFor="let image of shared.mediaArray; index as i" src="../../assets/default.jpg" width="300"
-            height="300">
+        <!-- width="300" height="300" -->
+        <img *ngFor="let image of shared.mediaArray; index as i" src={{image}}>
     </div>
 </div>
