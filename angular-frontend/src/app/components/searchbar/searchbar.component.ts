@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { transition, style, animate, trigger } from '@angular/animations';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { pairwise } from 'rxjs';
+import { Shared } from '../shared';
 
 const enterTransition = transition(':enter', [
   style({
@@ -48,7 +49,9 @@ export class SearchbarComponent implements OnInit {
   advancedOptionLabel: String = " ";
   advancedOptionsDisplay: boolean = false;
 
-  constructor() {
+  constructor(
+    private shared: Shared
+  ) {
     this.searchForm = new FormGroup({
       handle: new FormControl('', Validators.required),
       sortBy: new FormControl(''),
@@ -125,7 +128,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   search() {
-    console.log("Search query initialized");
+    this.shared.searchUser(this.searchForm.get('handle')?.value);
   }
 
 }
